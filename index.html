@@ -1,56 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>GIF Page Transition</title>
-
+    <title>Portfolio | Your Name</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
 
-    <!-- =====================================================
-         PAGE 1
-         ===================================================== -->
-
     <section id="page1" class="page">
-        <h1>Page One</h1>
+        <nav>
+            <div class="logo">YOUR NAME</div>
+            <div class="nav-links">
+                <a onclick="changeScreen('left')">Home</a>
+                <a onclick="changeScreen('left')">About</a>
+                <a onclick="changeScreen('left')">Skills</a>
+                <a onclick="changeScreen('right')">Projects</a>
+            </div>
+        </nav>
 
-        <div class="buttons">
-            <button onclick="changeScreen('left')">
-                Move Left
-            </button>
+        <div class="hero">
+            <div class="hero-text">
+                <div class="subtitle">WEB DEVELOPER</div>
+                <h1>Hi, I'm <span>Your Name</span></h1>
+                <p class="description">
+                    Computer Science student and aspiring Web Developer
+                    who enjoys creating modern and interactive websites.
+                </p>
+                <div>
+                    <button onclick="changeScreen('right')">View Projects →</button>
+                    <button class="outline" onclick="changeScreen('right')">Contact Me</button>
+                </div>
+            </div>
 
-            <button onclick="changeScreen('right')">
-                Move Right
-            </button>
+            <div class="profile-card">
+                <div class="profile">YN</div>
+            </div>
         </div>
     </section>
 
-
-    <!-- =====================================================
-         PAGE 2
-         ===================================================== -->
-
     <section id="page2" class="page">
-        <h1>Page Two</h1>
+        <nav>
+            <div class="logo">YOUR NAME</div>
+            <div class="nav-links">
+                <a onclick="changeScreen('left')">Home</a>
+                <a onclick="changeScreen('left')">About</a>
+                <a onclick="changeScreen('left')">Skills</a>
+                <a onclick="changeScreen('right')">Projects</a>
+            </div>
+        </nav>
+
+        <div class="projects">
+            <div class="section-title">
+                <p>MY WORK</p>
+                <h1>Projects</h1>
+            </div>
+
+            <div class="project-grid">
+                <div class="project">
+                    <span class="project-number">01</span>
+                    <h2>Portfolio Website</h2>
+                    <p>Personal portfolio website with an interactive page transition.</p>
+                    <div class="tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <span class="project-number">02</span>
+                    <h2>Web Application</h2>
+                    <p>Modern web application with responsive UI and interactive features.</p>
+                    <div class="tags">
+                        <span>JavaScript</span>
+                        <span>API</span>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <span class="project-number">03</span>
+                    <h2>MAS WebDev</h2>
+                    <p>Multi-agent system for generating full-stack web applications.</p>
+                    <div class="tags">
+                        <span>Python</span>
+                        <span>AI</span>
+                        <span>Flask</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="back-button" onclick="changeScreen('left')">← Back Home</button>
+        </div>
     </section>
 
-
-    <!-- =====================================================
-         TRANSITION GIF
-         ===================================================== -->
-
-    <img
-        id="gif"
-        src="Meatmergency_transparent.gif"
-        alt=""
-    >
-
-
-    <script src="script.js"></script>
-
+    <img id="gif" src="Meatmergency_transparent.gif" alt="Transition Animation">
 </body>
+
 </html>

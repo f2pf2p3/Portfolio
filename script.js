@@ -1,74 +1,65 @@
-/* =========================================================
-   GET ELEMENTS
-   ========================================================= */
-
+const gif = document.getElementById("gif");
 const page1 = document.getElementById("page1");
 const page2 = document.getElementById("page2");
-const gif = document.getElementById("gif");
 
-
-/* =========================================================
-   CHANGE SCREEN
-   ========================================================= */
+let currentPage = 1;
+let busy = false;
 
 function changeScreen(direction) {
+    if (busy) return;
 
-    /*
-     * Prevent the same GIF animation from being
-     * affected by a previous transition.
-     */
-    gif.classList.remove("move-left", "move-right");
-
-    page1.classList.remove("follow-left", "follow-right");
-    page2.classList.remove("show-left", "show-right");
-
-    /*
-     * Force the browser to restart the animation.
-     */
-    void gif.offsetWidth;
-
-
-    /* =====================================================
-       MOVE LEFT
-       ===================================================== */
-
-    if (direction === "left") {
-
-        // GIF starts on the right and moves left.
-        gif.classList.add("move-left");
-
-        /*
-         * Wait 600ms before moving the page.
-         *
-         * This makes the GIF appear and move first,
-         * then the page follows it.
-         */
-        setTimeout(() => {
-
-            page1.classList.add("follow-left");
-            page2.classList.add("show-left");
-
-        }, 600);
+    // Do not switch if already on the requested page
+    if ((direction === "left" && currentPage === 1) || (direction === "right" && currentPage === 2)) {
+        return;
     }
 
+    busy = true;
 
-    /* =====================================================
-       MOVE RIGHT
-       ===================================================== */
+    // Reset animation classes
+    gif.className = "";
+    page1.className = "page";
+    page2.className = "page";
 
     if (direction === "right") {
-
-        // GIF starts on the left and moves right.
-        gif.classList.add("move-right");
-
-        /*
-         * Wait 600ms before moving the page.
-         */
-        setTimeout(() => {
-
-            page1.classList.add("follow-right");
-            page2.classList.add("show-right");
-
-        }, 600);
+        page1.style.transform = "translateX(0)";
+        page2.style.transform = "translateX(100%)";
+    } else {
+        page1.style.transform = "translateX(-100%)";
+        page2.style.transform = "translateX(0)";
     }
+
+    // Restart GIF animation
+    void gif.offsetWidth;
+
+    gif.classList.add(direction === "right" ? "move-left" : "move-right");
+
+    // Start page animation after offset
+    setTimeout(() => {
+        if (direction === "right") {
+            page1.classList.add("follow-left");
+            page2.classList.add("show-right");
+        } else {
+            page2.classList.add("follow-right");
+            page1.classList.add("show-left");
+        }
+    }, 550);
+
+    // Cleanup after animation completes
+    setTimeout(() => {
+        currentPage = direction === "right" ? 2 : 1;
+
+        page1.className = "page";
+        page2.className = "page";
+
+        if (currentPage === 2) {
+            page1.style.transform = "translateX(-100%)";
+            page2.style.transform = "translateX(0)";
+        } else {
+            page1.style.transform = "translateX(0)";
+            page2.style.transform = "translateX(100%)";
+        }
+
+        gif.className = "";
+        busy = false;
+    }, 2500);
 }
