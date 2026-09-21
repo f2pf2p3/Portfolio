@@ -1,6 +1,6 @@
 /* =========================================================
-   GLOBAL
-   ========================================================= */
+           GLOBAL
+           ========================================================= */
 
 * {
     box-sizing: border-box;
@@ -12,188 +12,401 @@ body {
     font-family: Arial, sans-serif;
 }
 
-
 /* =========================================================
-   PAGE
-   ========================================================= */
+           PAGE LAYOUT & TRANSITIONS
+           ========================================================= */
 
 .page {
     position: absolute;
     inset: 0;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    will-change: transform;
 }
-
-
-/* =========================================================
-   PAGES
-   ========================================================= */
 
 #page1 {
     background: #dff5ff;
     z-index: 1;
+    transform: translateX(0);
 }
 
 #page2 {
     background: #b8e7ff;
     z-index: 0;
+    transform: translateX(100%);
 }
 
+/* =========================================================
+           PORTFOLIO NAVIGATION
+           ========================================================= */
+
+nav {
+    position: absolute;
+    top: 30px;
+    left: 7%;
+    right: 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo,
+.logo2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #075985;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #164e63;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.nav-links a:hover {
+    color: #0284c7;
+}
 
 /* =========================================================
-   BUTTON
-   ========================================================= */
+           HERO
+           ========================================================= */
+
+.hero {
+    width: 86%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.subtitle {
+    margin-bottom: 15px;
+    color: #0284c7;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.hero h1 {
+    margin: 0;
+    color: #0c4a6e;
+    font-size: clamp(45px, 7vw, 85px);
+    line-height: 1;
+}
+
+.hero h1 span {
+    color: #0284c7;
+}
+
+.description {
+    max-width: 550px;
+    margin: 25px 0;
+    color: #31586b;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+           PROFILE
+           ========================================================= */
+
+.profile-card {
+    width: 280px;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #7dd3fc;
+    border-radius: 50%;
+    background: #c9efff;
+}
+
+.profile {
+    width: 210px;
+    height: 210px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #38bdf8;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+/* =========================================================
+           BUTTONS
+           ========================================================= */
 
 button {
     padding: 14px 25px;
     margin: 5px;
-
     border: 0;
     border-radius: 30px;
-
+    background: #0284c7;
+    color: white;
     cursor: pointer;
     font-size: 16px;
 }
 
+button:hover {
+    background: #0369a1;
+}
+
+button.outline {
+    background: transparent;
+    border: 2px solid #0284c7;
+    color: #0369a1;
+}
 
 /* =========================================================
-   GIF
-   ========================================================= */
+           PROJECTS PAGE
+           ========================================================= */
+
+.projects {
+    width: 86%;
+}
+
+.section-title {
+    margin-bottom: 30px;
+}
+
+.section-title p {
+    margin: 0;
+    color: #0284c7;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.section-title h1 {
+    margin: 8px 0 0;
+    color: #0c4a6e;
+    font-size: 48px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.project {
+    padding: 25px;
+    border: 1px solid #7dd3fc;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.45);
+    transition: 0.2s;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.project-number {
+    color: #0284c7;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.project h2 {
+    color: #0c4a6e;
+}
+
+.project p {
+    color: #31586b;
+    line-height: 1.6;
+}
+
+.tags {
+    display: flex;
+    gap: 8px;
+}
+
+.tags span {
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #bae6fd;
+    color: #075985;
+    font-size: 12px;
+}
+
+/* =========================================================
+           BACK BUTTON
+           ========================================================= */
+
+.back-button {
+    margin-top: 25px;
+    background: transparent;
+    border: 2px solid #0284c7;
+    color: #0369a1;
+}
+
+/* =========================================================
+           GIF & KEYFRAME ANIMATIONS
+           ========================================================= */
 
 #gif {
     position: fixed;
     width: 240px;
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 10;
     opacity: 0;
     pointer-events: none;
+    will-change: left, transform;
 }
-
-
-/* =========================================================
-   GIF: RIGHT → LEFT
-   ========================================================= */
 
 #gif.move-left {
     animation: gifLeft 2.5s linear forwards;
-    
 }
 
 @keyframes gifLeft {
     0% {
         left: 110%;
         opacity: 0;
-        /*transform: translate(-50%, -50%) scaleX(-1);*/
+        transform: translateX(-50%) scaleX(1);
     }
 
     20% {
         left: 90%;
         opacity: 1;
+        transform: translateX(-50%) scaleX(1);
     }
 
     100% {
         left: -20%;
         opacity: 1;
+        transform: translateX(-50%) scaleX(1);
     }
 }
 
-
-/* =========================================================
-   GIF: LEFT → RIGHT
-   ========================================================= */
-
 #gif.move-right {
     animation: gifRight 2.5s linear forwards;
-    transform: translate(-50%, -50%) scaleX(-1);
 }
 
 @keyframes gifRight {
     0% {
         left: -10%;
         opacity: 0;
-        /*transform: translate(-50%, -50%);*/
+        transform: translateX(-50%) scaleX(-1);
     }
 
     20% {
         left: 10%;
         opacity: 1;
+        transform: translateX(-50%) scaleX(-1);
     }
 
     100% {
         left: 120%;
         opacity: 1;
+        transform: translateX(-50%) scaleX(-1);
     }
 }
 
-
-/* =========================================================
-   PAGE: RIGHT → LEFT
-   ========================================================= */
+/* Page Transitions */
 
 #page1.follow-left {
     animation: pageLeft 1.95s linear forwards;
-}
-
-#page2.show-left {
-    animation: page2Left 1.95s linear forwards;
-}
-
-@keyframes pageLeft {
-    0% {
-        transform: translateX(0);
-    }
-
-
-    100% {
-        transform: translateX(-100%);
-    }
-}
-
-@keyframes page2Left {
-    0% {
-        transform: translateX(100%);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
-}
-
-
-/* =========================================================
-   PAGE: LEFT → RIGHT
-   ========================================================= */
-
-#page1.follow-right {
-    animation: pageRight 1.95s linear forwards;
 }
 
 #page2.show-right {
     animation: page2Right 1.95s linear forwards;
 }
 
-@keyframes pageRight {
-    0%{
+@keyframes pageLeft {
+    from {
         transform: translateX(0);
     }
 
-    100% {
-        transform: translateX(100%);
+    to {
+        transform: translateX(-100%);
     }
 }
 
 @keyframes page2Right {
-    0% {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+#page2.follow-right {
+    animation: pageRight 1.95s linear forwards;
+}
+
+#page1.show-left {
+    animation: page1Left 1.95s linear forwards;
+}
+
+@keyframes pageRight {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes page1Left {
+    from {
         transform: translateX(-100%);
     }
 
-    100% {
+    to {
         transform: translateX(0);
+    }
+}
+
+/* =========================================================
+           MOBILE RESPONSIVENESS
+           ========================================================= */
+
+@media (max-width: 700px) {
+
+    .logo2,
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-card {
+        width: 180px;
+        height: 180px;
+    }
+
+    .profile {
+        width: 130px;
+        height: 130px;
+        font-size: 35px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
     }
 }
