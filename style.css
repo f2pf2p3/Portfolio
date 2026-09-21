@@ -1,0 +1,199 @@
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.page {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================================================
+   PAGES
+   ========================================================= */
+
+#page1 {
+    background: #dff5ff;
+    z-index: 1;
+}
+
+#page2 {
+    background: #b8e7ff;
+    z-index: 0;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+button {
+    padding: 14px 25px;
+    margin: 5px;
+
+    border: 0;
+    border-radius: 30px;
+
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   GIF
+   ========================================================= */
+
+#gif {
+    position: fixed;
+    width: 240px;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   GIF: RIGHT → LEFT
+   ========================================================= */
+
+#gif.move-left {
+    animation: gifLeft 2.5s linear forwards;
+    
+}
+
+@keyframes gifLeft {
+    0% {
+        left: 110%;
+        opacity: 0;
+        /*transform: translate(-50%, -50%) scaleX(-1);*/
+    }
+
+    20% {
+        left: 90%;
+        opacity: 1;
+    }
+
+    100% {
+        left: -20%;
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   GIF: LEFT → RIGHT
+   ========================================================= */
+
+#gif.move-right {
+    animation: gifRight 2.5s linear forwards;
+    transform: translate(-50%, -50%) scaleX(-1);
+}
+
+@keyframes gifRight {
+    0% {
+        left: -10%;
+        opacity: 0;
+        /*transform: translate(-50%, -50%);*/
+    }
+
+    20% {
+        left: 10%;
+        opacity: 1;
+    }
+
+    100% {
+        left: 120%;
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   PAGE: RIGHT → LEFT
+   ========================================================= */
+
+#page1.follow-left {
+    animation: pageLeft 1.95s linear forwards;
+}
+
+#page2.show-left {
+    animation: page2Left 1.95s linear forwards;
+}
+
+@keyframes pageLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes page2Left {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================================================
+   PAGE: LEFT → RIGHT
+   ========================================================= */
+
+#page1.follow-right {
+    animation: pageRight 1.95s linear forwards;
+}
+
+#page2.show-right {
+    animation: page2Right 1.95s linear forwards;
+}
+
+@keyframes pageRight {
+    0%{
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes page2Right {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
